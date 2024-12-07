@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Register = require("../model/register.model");
+const Register = require("../model/user.model");
 const { json } = require("express");
 module.exports.registerdata = async (req, res) => {
   try {
@@ -9,6 +9,7 @@ module.exports.registerdata = async (req, res) => {
       res.send("user already exist!");
     } else {
       await Register.create(userName);
+      res.send("your data has been registered!")
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
